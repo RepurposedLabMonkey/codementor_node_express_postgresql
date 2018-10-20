@@ -16,8 +16,10 @@
     "url": "D:/Documents/codementor/node_express_postgresql"
   },
   "dependencies": {
+    "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "moment": "^2.22.2",
+    "pg": "^7.5.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
