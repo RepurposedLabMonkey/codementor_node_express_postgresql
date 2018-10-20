@@ -1,14 +1,28 @@
 // server.js
 
-//bring in express and make a new instance of it
-//can require 'http' and 'https' for starting the respective servers also
 import express from 'express';
+//we need dotenv now for accessing .env
+import dotenv from 'dotenv';
+//we also need babel-polyfill node can work with async/wait and Promise
+import 'babel-polyfill';
+//import the 'table' structures
+import ReflectionWithJsObject from './src/usingJSObject/controllers/Reflection.js';
+import ReflectionWithDB from './src/usingDB/controllers/Reflection.js';
+
+//make a local instance of env
+dotenv.config();
+//check the env value and import the correct table structures
+//'process.' becauyse thats where env was loaded by .config
+const Reflection = process.env.TYPE === 'db' ?
+	ReflectionWithDB : ReflectionWithJsObject;
+
+	//create a local instance of express
 const app = express();
 
 //set up new 'middleware'
 app.use(express.json());
 
-//'sample endpoint' which tests if the erver is running
+//'sample endpoint' which tests if the server is running
 app.get('/', (req,res) => {
 	return res.status(200).send({
 		'message' : 'YAY! Congratulations! Your first endpoint is working'
