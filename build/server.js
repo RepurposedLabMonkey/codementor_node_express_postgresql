@@ -47,6 +47,13 @@ app.get('/', function (req, res) {
 	});
 });
 
+//testing record create (ie INSERT)
+app.post('/api/v1/reflections', Reflection.create);
+app.get('/api/v1/reflections', Reflection.getAll);
+app.get('/api/v1/reflections/:id', Reflection.getOne);
+app.put('/api/v1/reflections/:id', Reflection.update);
+app.delete('/api/v1/reflections/:id', Reflection.delete);
+
 //get the running node server as a callback to this function
 app.listen(3000);
 console.log('app running on port ', 3000);
