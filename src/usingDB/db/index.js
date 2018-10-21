@@ -1,10 +1,4 @@
 // src/usingDB/models/index.js
-
-//creates a new method 'query'
-//it takes two arguments...text, params
-// text = query text
-// params = values required by 'text'
-
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
@@ -22,14 +16,14 @@ export default {
    * @returns {object} object 
    */
   query(text, params){
-	return new Promise((resolve, reject) => {
-	  pool.query(text, params)
-	  .then((res) => {
-		resolve(res);
-	  })
-	  .catch((err) => {
-		reject(err);
-	  })
-	})
+    return new Promise((resolve, reject) => {
+      pool.query(text, params)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      })
+    })
   }
 }
